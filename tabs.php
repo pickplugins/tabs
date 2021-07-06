@@ -86,6 +86,11 @@ class Tabs{
 
     function cron_recurrence_interval( $schedules ){
 
+        $schedules['1minute'] = array(
+            'interval'  => 60,
+            'display'   => __( '1 Minute', 'textdomain' )
+        );
+
         $schedules['5minute'] = array(
             'interval'  => 300,
             'display'   => __( '5 Minute', 'textdomain' )
@@ -104,8 +109,8 @@ class Tabs{
         $tabs_upgrade = isset($tabs_plugin_info['tabs_upgrade']) ? $tabs_plugin_info['tabs_upgrade'] : '';
 
         if($tabs_upgrade != 'done'){
-            wp_schedule_event(time(), '5minute', 'tabs_cron_upgrade_settings');
-            wp_schedule_event(time(), '5minute', 'tabs_cron_upgrade_tabs');
+            wp_schedule_event(time(), '1minute', 'tabs_cron_upgrade_settings');
+            wp_schedule_event(time(), '1minute', 'tabs_cron_upgrade_tabs');
         }
 
 
@@ -133,7 +138,7 @@ class Tabs{
         wp_register_style('tabs-style', tabs_plugin_url. 'assets/frontend/css/style.css');
         wp_register_style('style-tabs', tabs_plugin_url. 'assets/global/css/style-tabs.css');
 
-        wp_register_style('tabs-tabs', tabs_plugin_url. 'assets/global/css/themesTabs.style.css');
+        wp_register_style('tabs', tabs_plugin_url. 'assets/global/css/themesTabs.style.css');
         wp_register_style('fontawesome-5',  tabs_plugin_url.'assets/global/css/font-awesome-5.css');
         wp_register_style('fontawesome-4',  tabs_plugin_url.'assets/global/css/font-awesome-4.css');
         wp_register_style('jquery-ui',  tabs_plugin_url.'assets/frontend/css/jquery-ui.css');
@@ -172,7 +177,7 @@ class Tabs{
         $active_plugins = get_option('active_plugins');
 
         if(!in_array( 'tabs-pro/tabs-pro.php', (array) $active_plugins )){
-            $links['get_premium'] = '<a target="_blank" class="" style=" font-weight:bold;" href="https://www.pickplugins.com/item/tabs-html-css3-responsive-accordion-grid-for-wordpress/?ref=dashboard">'.__('Buy Premium!', 'tabs').'</a>';
+            $links['get_premium'] = '<a target="_blank" class="" style=" font-weight:bold;" href="https://pickplugins.com/item/tabs-html-css3-responsive-tabs-for-wordpress/?ref=dashboard">'.__('Buy Premium!', 'tabs').'</a>';
 
 
         }

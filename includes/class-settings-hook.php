@@ -205,7 +205,7 @@ if(!function_exists('tabs_settings_content_help_support')) {
             <a class="button" href="https://www.pickplugins.com/documentation/tabs/"><?php echo __('Documentation', 'tabs'); ?></a>
 
             <p><?php echo __('Watch video tutorials.', 'tabs'); ?></p>
-            <a class="button" href="https://www.youtube.com/playlist?list=PL0QP7T2SN94ZPeQ83jOnteDDrOeDLBuFD"><i class="fab fa-youtube"></i> <?php echo __('All tutorials', 'tabs'); ?></a>
+            <a class="button" href="https://www.youtube.com/playlist?list=PL0QP7T2SN94b-aTE0u3sm_7ay3P7-dIs7"><i class="fab fa-youtube"></i> <?php echo __('All tutorials', 'tabs'); ?></a>
 
             <ul>
 <!--                <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=4ZGMA6hOoxs">Tabs - data migration</a></li>-->
@@ -237,7 +237,7 @@ if(!function_exists('tabs_settings_content_help_support')) {
 
             <p class="">We wish your 2 minutes to write your feedback about the <b>Tabs</b> plugin. give us <span style="color: #ffae19"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span></p>
 
-            <a target="_blank" href="https://wordpress.org/plugins/tabs/#reviews" class="button"><i class="fab fa-wordpress"></i> Write a review</a>
+            <a target="_blank" href="https://wordpress.org/support/plugin/tabs/reviews/" class="button"><i class="fab fa-wordpress"></i> Write a review</a>
 
 
             <?php
@@ -714,7 +714,74 @@ if(!function_exists('tabs_settings_content_3rd_party_import')) {
     }
 }
 
+add_action('tabs_settings_content_migration', 'tabs_settings_content_migration');
 
+if(!function_exists('tabs_settings_content_migration')) {
+    function tabs_settings_content_migration($tab){
+
+        $settings_tabs_field = new settings_tabs_field();
+
+        //delete_option('tabs_plugin_info');
+
+        $tabs_plugin_info = get_option('tabs_plugin_info');
+        $tabs_upgrade = isset($tabs_plugin_info['tabs_upgrade']) ? $tabs_plugin_info['tabs_upgrade'] : '';
+
+
+        $nonce = isset($_REQUEST['_wpnonce']) ? sanitize_text_field($_REQUEST['_wpnonce']) : '';
+        $start_migration = isset($_REQUEST['start_migration']) ? sanitize_text_field($_REQUEST['start_migration']) : '';
+
+        if ( wp_verify_nonce( $nonce, 'tabs_upgrade' )  ){
+
+
+
+            wp_schedule_event(time(), '1minute', 'tabs_cron_upgrade_settings');
+            wp_schedule_event(time(), '1minute', 'tabs_cron_upgrade_tabs');
+
+            //return;
+        }
+
+        ?>
+        <div class="section">
+            <div class="section-title"><?php echo __('Data migration', 'tabs'); ?></div>
+            <p class="description section-description"><?php echo __('Data migration will automatically completed.', 'tabs'); ?></p>
+
+            <div class="setting-field   ">
+                <?php
+
+
+                //echo '<pre>'.var_export(_get_cron_array(), true).'</pre>';
+                //echo '<pre>'.var_export(wp_get_scheduled_event('tabs_cron_upgrade_settings'), true).'</pre>';
+                //echo '<pre>'.var_export(wp_get_scheduled_event('tabs_cron_upgrade_tabs'), true).'</pre>';
+
+                //echo '<pre>'.var_export(wp_next_scheduled('tabs_cron_upgrade_tabs'), true).'</pre>';
+
+
+                if($tabs_upgrade != 'done') {
+
+
+                    ?>
+                    <p>Settings migration: <strong><?php if(wp_get_scheduled_event('tabs_cron_upgrade_settings') == false) echo 'Completed'; ?></strong></p>
+                    <p>Tabs Data migration: <strong><?php if(wp_get_scheduled_event('tabs_cron_upgrade_tabs') == false) echo 'Completed'; else echo 'Processing'; ?></strong>, Next schedule: <?php echo date('m-d-Y H:i:s', wp_next_scheduled('tabs_cron_upgrade_tabs')); ?> </p>
+
+                    <?php
+
+                }
+
+                ?>
+            </div>
+
+
+        </div>
+        <?php
+
+
+
+
+
+
+
+    }
+}
 
 
 
@@ -738,7 +805,7 @@ if(!function_exists('tabs_settings_content_buy_pro')) {
             ?>
 
             <p><?php echo __('If you love our plugin and want more feature please consider to buy pro version.', 'tabs'); ?></p>
-            <a class="button" href="https://www.pickplugins.com/item/tabs-html-css3-responsive-accordion-grid-for-wordpress/?ref=dashobard"><?php echo __('Buy premium', 'tabs'); ?></a>
+            <a class="button" href="https://pickplugins.com/item/tabs-html-css3-responsive-tabs-for-wordpress/?ref=dashobard"><?php echo __('Buy premium', 'tabs'); ?></a>
             <a class="button" href="http://www.pickplugins.com/demo/tabs/?ref=dashobard"><?php echo __('See all demo', 'tabs'); ?></a>
 
             <h2><?php echo __('See the differences','tabs'); ?></h2>
@@ -1085,7 +1152,7 @@ if(!function_exists('tabs_settings_content_buy_pro')) {
                 <tr>
                     <td class="col-features"><?php echo __('Buy now','tabs'); ?></td>
                     <td> </td>
-                    <td><a class="button" href="https://www.pickplugins.com/item/tabs-html-css3-responsive-accordion-grid-for-wordpress/?ref=dashobard"><?php echo __('Buy premium', 'tabs'); ?></a></td>
+                    <td><a class="button" href="https://pickplugins.com/item/tabs-html-css3-responsive-tabs-for-wordpress/?ref=dashobard"><?php echo __('Buy premium', 'tabs'); ?></a></td>
                 </tr>
 
             </table>

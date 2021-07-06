@@ -132,32 +132,32 @@ function tabs_main_style($atts){
     ?>
     <style type='text/css'>
         @media only screen and (min-width: 1024px ){
-            #tabs-tabs-<?php echo esc_attr($post_id); ?> {
+            #tabs-<?php echo esc_attr($post_id); ?> {
             <?php if(!empty($width_large)):?>
                 width: <?php echo esc_attr($width_large); ?>;
             <?php endif; ?>
             }
         }
         @media only screen and ( min-width: 768px ) and ( max-width: 1023px ) {
-            #tabs-tabs-<?php echo esc_attr($post_id); ?> {
+            #tabs-<?php echo esc_attr($post_id); ?> {
             <?php if(!empty($width_medium)):?>
                 width: <?php echo esc_attr($width_medium); ?>;
             <?php endif; ?>
             }
         }
         @media only screen and ( min-width: 0px ) and ( max-width: 767px ){
-            #tabs-tabs-<?php echo esc_attr($post_id); ?> {
+            #tabs-<?php echo esc_attr($post_id); ?> {
             <?php if(!empty($width_small)):?>
                 width: <?php echo esc_attr($width_small); ?>;
             <?php endif; ?>
             }
         }
-        #tabs-tabs-<?php echo esc_attr($post_id); ?>{
+        #tabs-<?php echo esc_attr($post_id); ?>{
         <?php if(!empty($container_text_align)):?>
             text-align: <?php echo esc_attr($container_text_align); ?>;
         <?php endif; ?>
         }
-        #tabs-tabs-<?php echo esc_attr($post_id); ?>{
+        #tabs-<?php echo esc_attr($post_id); ?>{
         <?php if(!empty($container_background_color)):?>
             background-color:<?php echo esc_attr($container_background_color); ?>;
         <?php endif; ?>
@@ -169,7 +169,7 @@ function tabs_main_style($atts){
             padding: <?php echo esc_attr($container_padding); ?>;
         <?php endif; ?>
         }
-        #tabs-tabs-<?php echo esc_attr($post_id); ?> .tabs-nav{
+        #tabs-<?php echo esc_attr($post_id); ?> .tabs-nav{
         <?php if(!empty($header_background_color)):?>
             background-color:<?php echo esc_attr($header_background_color); ?>;
         <?php endif; ?>
@@ -184,14 +184,14 @@ function tabs_main_style($atts){
         <?php endif; ?>
             border: none;
         }
-        #tabs-tabs-<?php echo esc_attr($post_id); ?> .tabs-nav:hover{
+        #tabs-<?php echo esc_attr($post_id); ?> .tabs-nav:hover{
         <?php if(!empty($header_active_background_color)):?>
             background-color: <?php echo esc_attr($header_active_background_color); ?>;
         <?php else:?>
             background-color: rgba(0,0,0,0);
         <?php endif; ?>
         }
-        #tabs-tabs-<?php echo esc_attr($post_id); ?> .ui-tabs-anchor{
+        #tabs-<?php echo esc_attr($post_id); ?> .ui-tabs-anchor{
         <?php if(!empty($header_color)):?>
             color:<?php echo esc_attr($header_color); ?>;
         <?php endif; ?>
@@ -201,19 +201,19 @@ function tabs_main_style($atts){
             margin:0px !important;
             padding:0px !important;
         }
-        #tabs-tabs-<?php echo esc_attr($post_id); ?> .tabs-head-title{
+        #tabs-<?php echo esc_attr($post_id); ?> .tabs-head-title{
         <?php if(!empty($header_color)):?>
             color:<?php echo esc_attr($header_color); ?>;
         <?php endif; ?>
         }
-        #tabs-tabs-<?php echo esc_attr($post_id); ?> .ui-tabs-active{
+        #tabs-<?php echo esc_attr($post_id); ?> .ui-tabs-active{
         <?php if(!empty($header_active_background_color)):?>
             background-color: <?php echo esc_attr($header_active_background_color); ?>;
         <?php else:?>
             background-color: rgba(0,0,0,0);
         <?php endif; ?>
         }
-        #tabs-tabs-<?php echo esc_attr($post_id); ?> .accordion-icons{
+        #tabs-<?php echo esc_attr($post_id); ?> .accordion-icons{
         <?php if(!empty($icon_color)):?>
             color:<?php echo esc_attr($icon_color); ?>;
         <?php endif; ?>
@@ -230,12 +230,12 @@ function tabs_main_style($atts){
             margin:<?php echo esc_attr($icon_margin); ?>;
         <?php endif; ?>
         }
-        #tabs-tabs-<?php echo esc_attr($post_id); ?> .tabs-nav:hover .accordion-icons span{
+        #tabs-<?php echo esc_attr($post_id); ?> .tabs-nav:hover .accordion-icons span{
         <?php if(!empty($icon_color_hover)):?>
             color:<?php echo esc_attr($icon_color_hover); ?>;
         <?php endif; ?>
         }
-        #tabs-tabs-<?php echo esc_attr($post_id); ?> .tabs-content{
+        #tabs-<?php echo esc_attr($post_id); ?> .tabs-content{
         <?php if(!empty($body_background_color)):?>
             background-color:<?php echo esc_attr($body_background_color); ?>;
             <?php endif; ?>
@@ -252,7 +252,7 @@ function tabs_main_style($atts){
             padding:<?php echo esc_attr($body_padding); ?>;
         <?php endif; ?>
         }
-        #tabs-tabs-<?php echo esc_attr($post_id); ?> .accordion-icons span{
+        #tabs-<?php echo esc_attr($post_id); ?> .accordion-icons span{
         <?php if(!empty($icon_color)):?>
             color:<?php echo esc_attr($icon_color); ?>;
         <?php endif; ?>
@@ -266,10 +266,10 @@ function tabs_main_style($atts){
         }
         if($tabs_icon_toggle=='yes'){
             ?>
-        .tabs-tabs .ui-tabs-active .tabs-tab-plus {
+        .tabs .ui-tabs-active .tabs-tab-plus {
             display: none;
         }
-        .tabs-tabs .ui-tabs-active .tabs-tab-minus {
+        .tabs .ui-tabs-active .tabs-tab-minus {
             display: inline;
         }
         <?php
@@ -530,26 +530,26 @@ function tabs_main_scripts($atts){
 
     $tabs = isset($tabs_options['tabs']) ? $tabs_options['tabs'] : array();
     $collapsible = !empty($tabs['collapsible']) ? $tabs['collapsible'] : 'true';
-    $active_event = isset($tabs['active_event']) ? $tabs['active_event'] : 'click';
-    $tabs_is_vertical = isset($tabs['is_vertical']) ? $tabs['is_vertical'] : '';
+    $active_event = !empty($tabs['active_event']) ? $tabs['active_event'] : 'click';
+    $tabs_is_vertical = !empty($tabs['is_vertical']) ? $tabs['is_vertical'] : '';
     ?>
     <script>
         jQuery(document).ready(function($){
             <?php
             if($tabs_is_vertical=='yes'){
                  ?>
-                $( "#tabs-tabs-<?php echo $post_id; ?>" ).addClass( "ui-tabs-vertical ui-helper-clearfix" );
-                $( "#tabs-tabs-<?php echo $post_id; ?> li" ).removeClass( "ui-corner-top" ).addClass( "ui-corner-left" );
+                $( "#tabs-<?php echo $post_id; ?>" ).addClass( "ui-tabs-vertical ui-helper-clearfix" );
+                $( "#tabs-<?php echo $post_id; ?> li" ).removeClass( "ui-corner-top" ).addClass( "ui-corner-left" );
                 <?php
             }
             ?>
-            $("#tabs-tabs-<?php echo $post_id; ?>" ).tabs({
+            $("#tabs-<?php echo $post_id; ?>" ).tabs({
                 collapsible: <?php echo $collapsible; ?>,
                 event: "<?php echo $active_event; ?>",
                 active: <?php echo $active_tab; ?>,
             });
             if(typeof tabs_tabs_active_index_<?php echo $post_id; ?> != 'undefined'){
-                $("#tabs-tabs-<?php echo $post_id; ?>").tabs("option", "active", tabs_tabs_active_index_<?php echo $post_id; ?>);
+                $("#tabs-<?php echo $post_id; ?>").tabs("option", "active", tabs_tabs_active_index_<?php echo $post_id; ?>);
             }
         })
     </script>

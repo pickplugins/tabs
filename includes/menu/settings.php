@@ -1,6 +1,8 @@
 <?php	
 if ( ! defined('ABSPATH')) exit;  // if direct access
 
+$tabs_plugin_info = get_option('tabs_plugin_info');
+$tabs_upgrade = isset($tabs_plugin_info['tabs_upgrade']) ? $tabs_plugin_info['tabs_upgrade'] : '';
 
 $current_tab = isset($_REQUEST['tab']) ? sanitize_text_field($_REQUEST['tab']) : 'general';
 
@@ -33,6 +35,15 @@ $tabs_settings_tab[] = array(
     'priority' => 9,
     'active' => ($current_tab == 'buy_pro') ? true : false,
 );
+if($tabs_upgrade != 'done') {
+    $tabs_settings_tab[] = array(
+        'id' => 'migration',
+        'title' => sprintf(__('%s Migration process', 'tabs'), '<i class="fas fa-spinner fa-spin"></i>'),
+        'priority' => 10,
+        'active' => ($current_tab == 'migration') ? true : false,
+    );
+}
+
 
 $tabs_settings_tab = apply_filters('tabs_settings_tabs', $tabs_settings_tab);
 

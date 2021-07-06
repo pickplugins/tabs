@@ -153,6 +153,8 @@ function tabs_cron_upgrade_tabs(){
 
 
             $tabs_tabs_active_event = get_post_meta( $tabs_id, 'tabs_tabs_active_event', true );
+            $tabs_tabs_active_event = !empty($tabs_tabs_active_event) ? $tabs_tabs_active_event : 'click';
+
             $tabs_options['tabs']['active_event'] = $tabs_tabs_active_event;
 
             $tabs_vertical   = get_post_meta( $tabs_id, 'tabs_vertical', true );
@@ -243,8 +245,7 @@ function tabs_cron_upgrade_tabs(){
             $tabs_active_bg_color = get_post_meta( $tabs_id, 'tabs_active_bg_color', true );
             $tabs_options['body']['active_background_color'] = $tabs_active_bg_color;
 
-            $tabs_items_content_bg_color = get_post_meta( $tabs_id, 'tabs_items_content_bg_color', true );
-            $tabs_options['body']['background_color'] = $tabs_items_content_bg_color;
+            $tabs_options['body']['background_color'] = $tabs_active_bg_color;
 
             $tabs_items_content_bg_opacity = get_post_meta( $tabs_id, 'tabs_items_content_bg_opacity', true );
             $tabs_options['body']['background_opacity'] = $tabs_items_content_bg_opacity;
@@ -338,14 +339,19 @@ function tabs_cron_upgrade_tabs(){
                 $tabs_options['content'][$index]['is_active'] = ($tabs_active == $i) ? 'yes' : 'no';
 
 
-                $active_icon = !empty($tabs_content_title_icon[$index]) ? $tabs_content_title_icon[$index] : '';
-                $inactive_icon = !empty($tabs_content_title_icon[$index]) ? $tabs_content_title_icon[$index] : '';
+//                $active_icon = !empty($tabs_content_title_icon[$index]) ? $tabs_content_title_icon[$index] : '';
+//                $inactive_icon = !empty($tabs_content_title_icon[$index]) ? $tabs_content_title_icon[$index] : '';
+
+                $active_icon = !empty($tabs_content_title_icon[$index]) ? '<i class="fa fa-'.$tabs_content_title_icon[$index].'"></i>' : '';
+                $inactive_icon = !empty($tabs_content_title_icon[$index]) ? '<i class="fa fa-'.$tabs_content_title_icon[$index].'"></i>' : '';
 
                 $tabs_options['content'][$index]['active_icon'] = $active_icon;
                 $tabs_options['content'][$index]['inactive_icon'] = $inactive_icon;
 
                 $active_icon = !empty($tabs_content_title_icon_custom[$index]) ? $tabs_content_title_icon_custom[$index] : '';
                 $inactive_icon = !empty($tabs_content_title_icon_custom[$index]) ? $tabs_content_title_icon_custom[$index] : '';
+
+
 
                 $tabs_options['content'][$index]['active_icon_custom'] = $active_icon;
                 $tabs_options['content'][$index]['inactive_icon_custom'] = $inactive_icon;

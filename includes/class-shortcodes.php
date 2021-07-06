@@ -42,7 +42,7 @@ class class_tabs_shortcodes  {
         ob_start();
 
         if ($view_type == 'tabs'):
-            ?><div id="tabs-tabs-<?php echo esc_attr($post_id); ?>" class="tabs-tabs-<?php echo esc_attr($post_id); ?> tabs-tabs tabs">
+            ?><div id="tabs-<?php echo esc_attr($post_id); ?>" class="tabs-<?php echo esc_attr($post_id); ?> tabs tabs">
             <?php
             do_action('tabs_main', $atts);
             ?>

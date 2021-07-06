@@ -2,12 +2,12 @@
 /* CSS Document */
 
 
-.tabs-tabs {
+.tabs {
   border: medium none !important;
   border-radius: 0 !important;
 }
 	
-.tabs-tabs .ui-tabs-nav {
+.tabs .ui-tabs-nav {
   background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
   border: medium none;
   margin: 0 !important;
@@ -15,37 +15,37 @@
 
 }
 	
-.tabs-tabs .tabs-nav {
+.tabs .tabs-nav {
   border: none;
   border-radius: 0px;
 }
 	
-.tabs-tabs .ui-tabs-nav li a {
+.tabs .ui-tabs-nav li a {
 outline: medium none;
   display: block;
 }
 
-.tabs-tabs .accordion-icons {
+.tabs .accordion-icons {
   padding: 0 5px;
 }
 
-.tabs-tabs .accordion-icon-inactive {
+.tabs .accordion-icon-inactive {
   display: none;
 }
 
 
-.tabs-tabs .ui-tabs-active .accordion-icon-active{
+.tabs .ui-tabs-active .accordion-icon-active{
   display: none;
 }
 
-.tabs-tabs .ui-tabs-active .accordion-icon-inactive{
+.tabs .ui-tabs-active .accordion-icon-inactive{
   display: inline-block;
 }
 
 
 
 
-.tabs-tabs .tabs-content {
+.tabs .tabs-content {
   border-radius: 0;
   padding: 0;
 }
@@ -53,18 +53,18 @@ outline: medium none;
 
 
 /*Themes Flat*/
-.tabs-tabs.flat {
+.tabs.flat {
   border: medium none;
 }
 
-.tabs-tabs.flat .tabs-nav {
+.tabs.flat .tabs-nav {
   background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
   border: 0 none;
   border-radius: 0;
 }
 
 
-.tabs-tabs.flat .tabs-content{}
+.tabs.flat .tabs-content{}
 
 
 

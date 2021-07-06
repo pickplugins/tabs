@@ -547,7 +547,7 @@ function tabs_metabox_content_style($post_id){
 
     ?>
     <div class="section">
-        <div class="section-title"><?php echo __('Accordion icons','tabs'); ?></div>
+        <div class="section-title"><?php echo __('Icons style','tabs'); ?></div>
         <p class="description section-description"><?php echo __('Customize accordion icons.','tabs'); ?></p>
 
         <?php
@@ -684,7 +684,7 @@ function tabs_metabox_content_style($post_id){
 
 
     <div class="section">
-        <div class="section-title"><?php echo __('Accordion header style','tabs'); ?></div>
+        <div class="section-title"><?php echo __('Header style','tabs'); ?></div>
         <p class="description section-description"><?php echo __('Customize accordion header.','tabs'); ?></p>
         <?php
 
@@ -818,7 +818,7 @@ function tabs_metabox_content_style($post_id){
     </div>
 
     <div class="section">
-        <div class="section-title"><?php echo __('Tabs content style','tabs'); ?></div>
+        <div class="section-title"><?php echo __('Content style','tabs'); ?></div>
         <p class="description section-description"><?php echo __('Customize accordion content.','tabs'); ?></p>
 
         <?php
@@ -1075,6 +1075,9 @@ function tabs_metabox_content_content($post_id){
     $tabs_options = get_post_meta($post_id,'tabs_options', true);
     $tabs_options = !empty($tabs_options) ? $tabs_options : tabs_old_options($post_id);
 
+    var_dump(tabs_old_options($post_id));
+
+
     $tabs_content = isset($tabs_options['content']) ? $tabs_options['content'] : array();
 
 
@@ -1112,6 +1115,30 @@ function tabs_metabox_content_content($post_id){
                 'default'		=> '',
                 'placeholder'		=> 'Content text',
             ),
+
+            array(
+                'id'		=> 'active_icon',
+                'css_id'		=> 'header_TIMEINDEX',
+                'title'		=> __('Icon','tabs'),
+                'details'	=> __('Header icon.','tabs'),
+                'type'		=> 'text',
+                'value'		=> '',
+                'default'		=> '',
+                'placeholder'		=> '',
+            ),
+
+            array(
+                'id'		=> 'inactive_icon',
+                'css_id'		=> 'header_TIMEINDEX',
+                'title'		=> __('Icon inactive','tabs'),
+                'details'	=> __('Header icon inactive.','tabs'),
+                'type'		=> 'text',
+                'value'		=> '',
+                'default'		=> '',
+                'placeholder'		=> '',
+            ),
+
+
             array(
                 'id'		=> 'hide',
                 'css_id'		=> 'hide_TIMEINDEX',
@@ -1250,13 +1277,13 @@ if(!function_exists('tabs_metabox_content_help_support')) {
             <a class="button" href="https://www.pickplugins.com/create-support-ticket/"><?php echo __('Create support ticket', 'tabs'); ?></a>
 
             <p><?php echo __('Read our documentation before asking your question.', 'tabs'); ?></p>
-            <a class="button" href="https://www.pickplugins.com/documentation/tabs/"><?php echo __('Documentation', 'tabs'); ?></a>
+            <a target="_blank" class="button" href="https://www.pickplugins.com/documentation/tabs/"><?php echo __('Documentation', 'tabs'); ?></a>
 
             <p><?php echo __('Watch video tutorials.', 'tabs'); ?></p>
-            <a class="button" href="https://www.youtube.com/playlist?list=PL0QP7T2SN94ZPeQ83jOnteDDrOeDLBuFD"><i class="fab fa-youtube"></i> <?php echo __('All tutorials', 'tabs'); ?></a>
+            <a target="_blank" class="button" href="https://www.youtube.com/playlist?list=PL0QP7T2SN94b-aTE0u3sm_7ay3P7-dIs7"><i class="fab fa-youtube"></i> <?php echo __('All tutorials', 'tabs'); ?></a>
 
             <ul>
-                <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=4ZGMA6hOoxs">Tabs - data migration</a></li>
+<!--                <li><i class="far fa-dot-circle"></i> <a href="https://www.youtube.com/watch?v=4ZGMA6hOoxs">Tabs - data migration</a></li>-->
 
 
             </ul>
@@ -1285,7 +1312,7 @@ if(!function_exists('tabs_metabox_content_help_support')) {
 
             <p class="">We wish your 2 minutes to write your feedback about the <b>Tabs</b> plugin. give us <span style="color: #ffae19"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span></p>
 
-            <a target="_blank" href="https://wordpress.org/plugins/tabs/#reviews" class="button"><i class="fab fa-wordpress"></i> Write a review</a>
+            <a target="_blank" href="https://wordpress.org/support/plugin/tabs/reviews/" class="button"><i class="fab fa-wordpress"></i> Write a review</a>
 
 
             <?php

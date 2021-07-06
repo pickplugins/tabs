@@ -290,6 +290,8 @@ function tabs_old_options($tabs_id){
 
     $tabs_active_accordion = get_post_meta($tabs_id,'tabs_active_accordion', true);
 
+    //var_dump($tabs_content_title);
+
     $i = 0;
 
     if(!empty($tabs_content_title))
