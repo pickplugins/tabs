@@ -4,7 +4,7 @@
 	Tags: Tabs, FAQ, WooCommerce FAQ Tab, Tabs short-code, tabs widget,  tab
 	Requires at least: 3.8
 	Tested up to: 6.3
-	Stable tag: 1.3.9
+	Stable tag: 1.3.10
 	License: GPLv2 or later
 	License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -140,8 +140,11 @@ then paste this shortcode anywhere in your page to display tabs<br />
 == Changelog ==
 
 
+	= 1.3.10 =
+    * 2023-08-23 fix - Setting framework updated
+
 	= 1.3.9 =
-    * 2023-08-17 fix - Accordion content security issue fixed.
+    * 2023-08-17 fix - Tabs content security issue fixed.
 
 	= 1.3.8 =
     * 2023-06-19 fix -  Minor security issue fixed.
