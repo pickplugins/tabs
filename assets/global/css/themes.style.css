@@ -1,0 +1,126 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+.tabs-lazy {
+    text-align: center;
+}
+
+.accordion-edit {
+    margin: 10px 0;
+    text-align: left;
+}
+
+.tabs .tabs-head .tabs-head-title-toggle {
+    display: none;
+    padding: 0 10px;
+}
+
+
+
+.tabs  .expand-collapse {
+    display: inline-block;
+    background: rgba(112,176,255,1) none repeat scroll 0 0;
+    padding: 4px 15px;
+    color: #fff;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.tabs .expand-collapse.active .collapse{  display: block;}
+.tabs .expand-collapse.active .expand {
+    display: none;
+}
+
+
+.tabs .expand{}
+.tabs  .collapse {
+    display: none;
+}
+
+
+.tabs .next-prev{}
+.tabs .next-prev .next, .tabs .next-prev .previous {
+    padding: 6px 13px;
+    display: inline-block;
+    margin: 0 10px 0 0;
+
+}
+.tabs .next-prev .next{}
+.tabs .next-prev .previous{}
+
+.search-input-wrap{
+    display: inline-block;
+    margin: 5px;
+}
+
+/*Themes CSS*/
+ 
+.tabs .tabs-head {
+	cursor: pointer;
+	padding: 10px;
+	display: flex; 
+	align-items: center;
+    outline: none;
+}
+
+.tabs .tabs-head-title {
+  margin: 0 10px;
+  width:100%;
+}
+
+.tabs .tabs-head .ui-accordion-header-icon {
+    display: none;
+}
+.tabs .tabs-head .accordion-minus{
+	display:none;
+	}
+
+.tabs .tabs-head.ui-state-active .accordion-plus{
+	display:none;
+}
+
+.tabs .tabs-head.ui-state-active .accordion-minus{
+	display:inline-block;
+}
+
+
+.tabs .accordion-content {
+  background: #fff none repeat scroll 0 0;
+  padding: 10px;
+}
+
+.tabs .tabs-head-title, .tabs .accordion-icons {
+
+}
+
+
+.tabs .accordion-icons.left {
+  float: left;
+}
+
+.tabs .accordion-icons.right{
+float: right;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
